@@ -1,4 +1,5 @@
 "use client"
+
 import { Header } from "@/components/header"
 import { WalletOverview } from "@/components/dashboard/wallet-overview"
 import { TransactionHistory } from "@/components/dashboard/transaction-history"
