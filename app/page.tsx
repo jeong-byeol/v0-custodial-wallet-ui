@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Header } from "@/components/header"
 import { WalletOverview } from "@/components/dashboard/wallet-overview"
 import { TransactionHistory } from "@/components/dashboard/transaction-history"
@@ -10,6 +11,8 @@ import { WithdrawalLimit } from "@/components/admin/withdrawal-limit"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function Home() {
+  const [safeAddress, setSafeAddress] = useState<string>("")
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -32,10 +35,10 @@ export default function Home() {
           </TabsList>
 
           <TabsContent value="dashboard" className="space-y-6">
-            <WalletOverview />
+            <WalletOverview safeAddress={safeAddress} onSafeAddressChange={setSafeAddress} />
 
             <div className="grid gap-6 md:grid-cols-2">
-              <BalanceChart />
+              <BalanceChart safeAddress={safeAddress} />
               <TransactionHistory />
             </div>
           </TabsContent>
